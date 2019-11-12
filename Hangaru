@@ -1,6 +1,8 @@
 import string
+import random
 alpha = list(string.ascii_lowercase)
-secretWord = "GoUSTe"
+wordList = ["Adult", "Aeroplane", "Air", "Aircraft", "Airforce", "Airport", "Album", "Alphabet", "Apple", "Arm", "Army", "Baby", "Backpack", "Balloon", "Banana", "Bank", "Barbecue", "Bathroom", "Bathtub", "Bed", "Bee", "Bible", "Bird", "Bomb", "Book ", "Boss", "Bottle", "Bowl", "Box", "Boy", "Brain", "Bridge", "Butterfly", "Button", "Cappuccino", "Car", "Carpet", "Carrot", "Cave", "Chair", "Chess", "Chief", "Child", "Chisel", "Chocolates", "Church", "Circle", "Circus", "clock", "clown", "Coffee", "Comet", "Compact", "Compass", "Computer", "Crystal", "Cup", "Cycle", "Data", "Desk", "Diamond", "Dress", "Drill", "Drink", "Drum", "Dung", "Ears", "Earth", "Egg", "Electricity", "Elephant", "Eraser", "Explosive", "Eyes", "Family"Fan, "Fan", "Feather", "Festival", "Film", "Finger", "Fire", "Floodlight", "Flower", "Foot", "Fork", "Freeway", "Fruit", "Fungus", "Game", "Garden", "Gas", "Gate", "Gemstone", "Girl", "Gloves", "God", "Guitar", "Hammer", "Hat", "Hieroglyph", "Highway", "Horoscope", "Horse", "Hose", "Ice", "Icecream", "Insect", "Jet", "Junk", "Kaleidoscope", "Kitchen", "Knife", "Leather", "Library", "Liqui", "Magnet", "Man", "Map", "Maze", "Meat", "Meteor", "Microscope", "Milk", "Milkshake", "Mist", "Money", "Monster", "Mosquito", "Mouth", "Nail", "Navy", "Necklace", "Needle", "Onion", "PaintBrush", "Pants", "Parachute", "Passport", "Pebble", "Pendulum", "Pepper", "Perfume", "Pillow", "Plane", "Planet", "Pocket", "Post", "Potato", "Printer", "Prison", "Pyramid", "Radar", "Rainbow", "Record", "Restaurant", "Rifle", "Ring", "Robot", "Rock", "Rocket", "Roof", "Room", "Rope", "Saddle", "Salt", "Sandpaper", "Sandwich", "SatelliteSchoo", "Sex", "Ship", "Shoes", "Shop", "Shower", "Signature", "Skeleton", "Slave", "Snail", "Software", "Solid", "Space", "Spectrum", "Sphere", "Spice", "Spiral", "Spoon", "Sports", "Spot", "Square", "Staircase", "Star", "Stomach", "Sunglight", "lasses", "Surveyor", "Swimming", "Sword", "Table", "Tapestry", "Teeth", "Telescope", "Television", "Tennis", "Thermometer", "Tiger", "Toilet", "Tongue", "Torch", "Torpedo", "Train", "Treadmill" ,"Triangle", "Tunnel", "Typewriter", "Umbrella", "Vacuum", "Vampire", "Videotape", "Vulture", "Water", "Weapon", "Web", "Wheelchair", "Window", "Woman", "Worm"]
+secretWord = random.choice(wordList)
 
 def isWordGuessed(secretWord,lettersGuessed):
     for s in secretWord:
@@ -31,10 +33,11 @@ def Hangaroo(secretWord):
     lsecret = len(secretWord)
     secret = []
     e = 0
+    print("The word is:")
     while e < lsecret:
         secret.append("_")
         e += 1
-    print ("The word is: """.join(secret))
+    print ("".join(secret))
     mistakesMade = 0
     while mistakesMade < 6:
         if isWordGuessed(secretWord,lettersGuessed) == True:
@@ -51,7 +54,7 @@ def Hangaroo(secretWord):
             else: 
                 lettersGuessed.append(letter)
                 mistakesMade += 1
-                print("Wrong Guess!!That's Oki!!!")
+                print("Wrong Guess!!That's Oki!!!Word: ",getGuessedWord(secretWord,lettersGuessed))
     if isWordGuessed(secretWord,lettersGuessed) == True:
         print("Very Noiceee!!!Congratulations,the Kangaroo is staying alive staying alive HA HA HA HA!!!")
     elif mistakesMade == 6:
