@@ -32,15 +32,15 @@ def Hangaroo(secretWord):
     secret = []
     e = 0
     while e < lsecret:
-        secret.append(e)
-        e =+ 1
-    print ("".join(secret))
+        secret.append("_")
+        e += 1
+    print ("The word is: """.join(secret))
     mistakesMade = 0
     while mistakesMade < 6:
         if isWordGuessed(secretWord,lettersGuessed) == True:
             break
         print ("You have ", 6-mistakesMade, " guesses left")
-        print ("Available letters: ",getGuessedWord(secretWord,lettersGuessed))
+        print ("Available letters: ",getAvailableLetters(lettersGuessed))
         letter = input("Input your letter guess: ")
         if letter in lettersGuessed:
             print ("Noooo!Repetition of guessed letters are not allowed!!!")
@@ -51,9 +51,9 @@ def Hangaroo(secretWord):
             else: 
                 lettersGuessed.append(letter)
                 mistakesMade += 1
-                print("Wrong Guess!!That's Oki, try again!!!")
+                print("Wrong Guess!!That's Oki!!!")
     if isWordGuessed(secretWord,lettersGuessed) == True:
-        print("Very Noiceee!!!Congratulations,the Kangaroo is alive!!!")
+        print("Very Noiceee!!!Congratulations,the Kangaroo is staying alive staying alive HA HA HA HA!!!")
     elif mistakesMade == 6:
         print("Awit:((, the Kangaroo has been slain!!!Try Again")
         
