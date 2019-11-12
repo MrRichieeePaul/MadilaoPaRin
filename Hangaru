@@ -1,0 +1,60 @@
+import string
+alpha = list(string.ascii_lowercase)
+secretWord = "GoUSTe"
+
+def isWordGuessed(secretWord,lettersGuessed):
+    for s in secretWord:
+        x = s in lettersGuessed
+        if x == False:
+            break
+    return x
+
+def getGuessedWord(secretWord,lettersGuessed):
+    lst = []
+    for s in secretWord:
+        if s in lettersGuessed:
+            x = s
+        else: 
+            x = "_"
+        lst.append(x)
+    return "".join(lst)
+
+def getAvailableLetters(lettersGuessed):
+    j = "".join(lettersGuessed)
+    for l in j:
+        if l in alpha:
+            alpha.remove(l)
+    return "".join(alpha)
+
+def Hangaroo(secretWord):
+    lettersGuessed = []
+    lsecret = len(secretWord)
+    secret = []
+    e = 0
+    while e < lsecret:
+        secret.append(e)
+        e =+ 1
+    print ("".join(secret))
+    mistakesMade = 0
+    while mistakesMade < 6:
+        if isWordGuessed(secretWord,lettersGuessed) == True:
+            break
+        print ("You have ", 6-mistakesMade, " guesses left")
+        print ("Available letters: ",getGuessedWord(secretWord,lettersGuessed))
+        letter = input("Input your letter guess: ")
+        if letter in lettersGuessed:
+            print ("Noooo!Repetition of guessed letters are not allowed!!!")
+        else:
+            if letter in secretWord:
+                lettersGuessed.append(letter)
+                print("Noiceee, Word: ",getGuessedWord(secretWord,lettersGuessed))
+            else: 
+                lettersGuessed.append(letter)
+                mistakesMade += 1
+                print("Wrong Guess!!That's Oki, try again!!!")
+    if isWordGuessed(secretWord,lettersGuessed) == True:
+        print("Very Noiceee!!!Congratulations,the Kangaroo is alive!!!")
+    elif mistakesMade == 6:
+        print("Awit:((, the Kangaroo has been slain!!!Try Again")
+        
+        
